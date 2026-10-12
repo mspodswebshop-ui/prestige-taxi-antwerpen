@@ -6,6 +6,8 @@ draait op GitHub: geen server, geen database, geen Netlify.
 - Website: `https://mspodswebshop-ui.github.io/prestige-taxi-antwerpen/`
 - Beheer: `https://mspodswebshop-ui.github.io/prestige-taxi-antwerpen/admin/`
 
+De site staat op de branch `gh-pages`; GitHub Pages toont die branch.
+
 ## Hoe werkt het?
 
 Het beheer laadt de pagina's van GitHub, jij past teksten en foto's aan, en
