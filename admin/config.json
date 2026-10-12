@@ -1,5 +1,12 @@
 {
   "owner": "mspodswebshop-ui",
   "repo": "prestige-taxi-antwerpen",
-  "branch": "gh-pages"
+  "branch": "gh-pages",
+  "token": {
+    "v": 1,
+    "iter": 310000,
+    "salt": "PZva1UV/jfVH9hfquqIbmw==",
+    "iv": "nKAd7CuEZ4EBdSqr",
+    "data": "3adF7g4rzJq1ur0NGTRWZS25FUcUq01Y4njolHfStPzTVu8W7H/oj43c8ZgAOKl7hQcd0zvDOej11NSvi0s1DtY1ko6nluG6kC/TX/opuGPdOOQh4slRHIhADw+MDhcwFbnScEOa5oUte+T5Vw=="
+  }
 }
