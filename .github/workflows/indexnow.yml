@@ -1,0 +1,38 @@
+# Meldt elke nieuwe versie van de website aan Bing en andere zoekmachines via
+# IndexNow (https://www.indexnow.org). Geen account nodig: de sleutel staat in
+# 2dba85e50402d28e7e7ffa93e23aec97.txt op de site zelf.
+name: Zoekmachines verwittigen
+
+on:
+  push:
+    branches: [gh-pages]
+  workflow_dispatch:
+
+jobs:
+  indexnow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wachten tot GitHub Pages de nieuwe versie toont
+        run: sleep 90
+      - name: IndexNow
+        run: |
+          BASE="https://mspodswebshop-ui.github.io/prestige-taxi-antwerpen/"
+          cat > body.json <<JSON
+          {
+            "host": "mspodswebshop-ui.github.io",
+            "key": "2dba85e50402d28e7e7ffa93e23aec97",
+            "keyLocation": "${BASE}2dba85e50402d28e7e7ffa93e23aec97.txt",
+            "urlList": [
+              "${BASE}",
+              "${BASE}luchthaven.html",
+              "${BASE}diensten.html",
+              "${BASE}contact.html",
+              "${BASE}over-ons.html"
+            ]
+          }
+          JSON
+          cat body.json
+          code=$(curl -s -o resp.txt -w "%{http_code}" -X POST https://api.indexnow.org/indexnow -H "Content-Type: application/json; charset=utf-8" --data @body.json)
+          echo "IndexNow antwoord: HTTP $code"; cat resp.txt; echo
+          # 200 = ontvangen, 202 = ontvangen (sleutel wordt nog gecontroleerd)
+          case "$code" in 200|202) exit 0 ;; *) exit 1 ;; esac
